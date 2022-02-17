@@ -1,23 +1,25 @@
 #include <stdio.h>
 
+typedef enum { false = 0, true = !false } bool;
+
 typedef struct {
 	char* name;
 	int age;
-	int awake;
+	bool awake;
 } Player;
 
 void sleep(Player* p) {
-	p->awake = 0;
+	p->awake = false;
 	printf("%s is sleeping!\n", p->name);
 }
 
 void wake(Player* p) {
-	p->awake = 1;
+	p->awake = true;
 	printf("%s woke up!\n", p->name);
 }
 
 int main() {
-	Player nodi = {"Nodi", 9, 1};
+	Player nodi = {.name="Nodi", .age=9, .awake=true};
 
 	sleep(&nodi);
 	printf("Awake: %d\n", nodi.awake);
