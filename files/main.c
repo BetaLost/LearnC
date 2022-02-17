@@ -1,19 +1,13 @@
 #include <stdio.h>
 
 int main(int argc, char** argv) {
-	FILE* pFile = fopen(argv[1], "r");
-	char ch;
+	FILE* fp = fopen(argv[1], "r");
+	char line[1024];
+	int linecount = 0;
 
-	if (pFile == NULL) {
-		fprintf(stderr, "Failed to open file \"%s\".\n", argv[1]);
-		return 1;
+	while (fgets(line, sizeof(line), fp) != NULL) {
+		printf("%d\t%s", ++linecount, line);
 	}
 
-	do {
-		ch = fgetc(pFile);
-		printf("%c", ch);
-	} while (ch != EOF);
-
-	fclose(pFile);
-	return 0;
+	fclose(fp);
 }
