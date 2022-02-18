@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-typedef enum { false = 0, true = !false } bool;
+typedef enum { false, true } bool;
 
 typedef struct {
 	char* name;
