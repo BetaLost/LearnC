@@ -1,4 +1,9 @@
 # Makefile
-TARGET= main
-$(TARGET): main.c
-	clang -o main main.c mymath.c
+
+CC = clang
+CFLAGS = -Wall -Werror
+SRCS := $(wildcard *.c)
+BIN = main
+
+all:
+	${CC} ${CFLAGS} ${SRCS} -o ${BIN}
